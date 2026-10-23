@@ -1,0 +1,483 @@
+/* =========================
+   1. CONFIGURACIÓN GENERAL
+   ========================= */
+
+:root {
+    --dark: #111827;
+    --dark-secondary: #1f2937;
+    --accent: #38bdf8;
+    --background: #f8fafc;
+    --white: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --footer: #0b0f19;
+}
+
+/* Elimina margenes i rellenos */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /*Desplazamiento suave al clicar enlaces */
+    scroll-padding-top: 40px; /*Añade margen superior al hacer scroll */
+}
+
+body {
+    font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.7; /* Interlineado */
+}
+
+a {
+    color: inherit; /* Adoptan color de texto donde estan */
+    text-decoration: none; /* Quitar subrayado */
+}
+
+ul {
+    list-style: none; /* Elimina viñetas, puntos.. */
+}
+
+/* =========================
+   2. CABECERA Y HERO
+   ========================= */
+
+.hero {
+    background: linear-gradient(135deg, #111827, #1e293b); /* Degradado diagonal */
+    color: var(--white);
+    min-height: 80vh;
+    padding: 0 8%;
+    display: flex; /*flex para organizar columna vertical */
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex; /* Alineados horizontalmente */
+    justify-content: space-between; /* logo izquierda, menu derecha */
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem; /* Espacio entre elementos */
+}
+
+.nav-links a { /* Cambio de color cuando mouse hover */
+    font-size: 0.95rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    max-width: 800px; /* limitar el ancho del texto */
+    padding: 4rem 0;
+}
+
+.eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.hero-text h1 { /* Ajusta el tamaño del titulo en función de la pantalla (funcion moderna) */
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.hero-description { 
+    font-size: 1.15rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.primary-button {
+    background-color: var(--accent);
+    color: var(--dark);
+}
+
+.primary-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px); /* Efecto visual cuando mouse Hover */
+}
+
+.secondary-button {
+    border: 1px solid var(--text-light);
+    color: var(--white);
+}
+
+.secondary-button:hover { /* Cambio de color cuando mouse Hover */
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* =========================
+   3. SECCIONES GENERALES
+   ========================= */
+
+.section { /* Espaciado amplio en cada seccion del currículum */
+    padding: 6rem 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.section-title span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: monospace; /* Para los ordinales de cada sección */
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* =========================
+   4. ABOUT ME
+   ========================= */
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+.about-highlight {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.highlight-item strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.highlight-item span {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* =========================
+   5. SKILLS
+   ========================= */
+
+.skills-grid { /*Crea layouts que se ajustan en base al tamaño de la pagina con un minimo de 240px*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.skill-category h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    color: var(--dark);
+    border-bottom: 2px solid var(--background);
+    padding-bottom: 0.5rem;
+}
+
+.skill-category ul {
+    display: flex;
+    flex-wrap: wrap; /* Si no cabe una etiqueta, pasa a la siguiente fila */
+    gap: 0.5rem;
+}
+
+.skill-category li {
+    background-color: var(--background);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+/* =========================
+   6. PROJECTS
+   ========================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /*Sombra suave bajo el box de la tarjeta, simula que flota */
+}
+
+.project-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-family: monospace;
+}
+
+.project-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.project-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    flex: 1; /* Permite que las etiquetas se alineen en el borde inferior */
+}
+
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-technologies span {
+    font-size: 0.8rem;
+    background-color: var(--background);
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* =========================
+   7. EDUCATION
+   ========================= */
+
+.timeline {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.education-item {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 180px 1fr; /* Reserva espacio para las fechas, el resto para contenido */
+    gap: 2rem;
+    align-items: center;
+}
+
+.education-date {
+    font-weight: 700;
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 1.05rem;
+}
+
+.education-info h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+}
+
+.education-info p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* =========================
+   8. LANGUAGES
+   ========================= */
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.language-card {
+    background-color: var(--white);
+    padding: 1.8rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.language-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.language-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* =========================
+   9. CONTACT
+   ========================= */
+
+.contact-section {
+    background-color: var(--dark);
+    color: var(--white);
+    max-width: 100%;
+    padding: 6rem 8%;
+    border-radius: 0;
+}
+
+.contact-content {
+    max-width: 600px;
+}
+
+.contact-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-content > p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.email-link {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.email-link:hover { /* Subraya cuando mouse hover */
+    text-decoration: underline;
+}
+
+.phone {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.phone a:hover {
+    color: var(--accent); /*Resalta telefono cuando mouse hover */
+}
+
+/* =========================
+   10. FOOTER
+   ========================= */
+
+footer {
+    background-color: var(--footer);
+    color: var(--text-light);
+    padding: 2rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+/* =========================
+   11. RESPONSIVE DESIGN
+   ========================= */
+
+@media (max-width: 768px) { /* Si la pantalla es inferior a... */
+    .navbar {
+        flex-direction: column; /* Pasa de horizontal a vertical */
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr; /* Pas de 2 a 1 columna */
+        gap: 2rem;
+    }
+
+    .education-item {
+        grid-template-columns: 1fr; /* Fechas arriba y info abajo en lugar de a los lados */
+        gap: 0.5rem;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center; /* Pie de pagina centrado */
+    }
+}
